@@ -7,16 +7,15 @@ def word_processing(secret_word: type(string), letter: type(string), hashed: typ
     index = 0
     for l in secret_letters:
         if letter == l:
-            print(loss)
             hashed[index] = l
-            print("                                         You chose wisely!\n")
-            print('                                     The word to guess: ' + ''.join(hashed))
-            losing = loss - 1
-            return losing
         index += 1
     if hashed == pure_hash:
             print("                                          You chose poorly\n")
             print('                                     The word to guess: ' + ''.join(hashed))
+    else:
+        print("                                         You chose wisely!\n")
+        print('                                     The word to guess: ' + ''.join(hashed))
+        loss = loss - 1
 
 
 def screen_change():
