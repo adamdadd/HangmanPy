@@ -1,48 +1,59 @@
 import string
+import random
+import time
 
 
-def word_processing(secret_word: type(string), letter: type(string), hashed: type(list), loss: type(int)):
+def word_processing(secret_word: type(string), alphabet: type(list), letter: type(string), hashed: type(list), losing: type(int), man: type(list)):
     secret_letters = list(secret_word)
-    pure_hash = hashed.copy()
+    pure_hash = hashed.copy()           # Value of hashed saved going into function
     index = 0
     for l in secret_letters:
         if letter == l:
             hashed[index] = l
         index += 1
     if hashed == pure_hash:
-            print("                                          You chose poorly\n")
-            print('                                     The word to guess: ' + ''.join(hashed))
+        alphabet.remove(letter + ' ')
+        losing += 1
+        print("                                     You chose poorly\nlives", str(10 - losing) + man[losing])
+        time.sleep(1)
+        print('                                  The word to guess: ' + ''.join(hashed))
     else:
-        print("                                         You chose wisely!\n")
-        print('                                     The word to guess: ' + ''.join(hashed))
-        loss = loss - 1
+        print("                                         You chose wisely!\nlives", str(10 - losing) + man[losing])
+        time.sleep(1)
+        print('                                      The word to guess: ' + ''.join(hashed))
 
 
 def screen_change():
+    loading = "To The Gallows"
+    for i in range(100):
+        loading += '*'
+        print(loading)
+        time.sleep(0.1)
     for x in range(1000):
-        print("*********************8*******************8******************8************************8**************"
+        print("*********************&*******************&******************&************************&**************"
               "*****")
+    time.sleep(2)
     print("********************(XX)****************(XX)***************(XX)*********************(XX)************"
           "*****")
-    print("*******************--||--**************--||--*************--||--*******************--||--***********"
+    print("*********************&&******************&&*****************&&***********************&&*************"
           "*****")
-    print("********************/***\\***************/**\\***************/**\\*********************/**\\************"
+    print("*******************==||==**************==||==*************==||==*******************==||==***********"
           "*****")
-    print("*******************/*****\\*************/****\\*************/****\\*******************/****\\***********"
+    print("*******************/***\\****************/**\\***************/**\\*********************/**\\************"
+          "*****")
+    print("******************/*****\\**************/****\\*************/****\\*******************/****\\***********"
           "*****")
 
 
-def letter_guess(secret_word: type(string), hashed: type(list), alphabet: type(list), loss: type(int), the_hang_man: type(list)):
-    print("\nPLayer 2...............................................................................................")
+def letter_guess(secret_word: type(string), hashed: type(list), alphabet: type(list), losses: type(int), the_hang_man: type(list)):
+    print("\nYour Turn ..............................................................................................")
     print("Choices: " + ''.join(alphabet))
     guess = input("Guess a letter: ")
     if guess == "exit":
         print("****************************       The word was " + secret_word + "    *******************************")
         exit(0)
     else:
-        alphabet.remove(guess + ' ')
-        word_processing(secret_word, guess, hashed, loss)
-        print("\n" + the_hang_man[loss] + "\n")
+        word_processing(secret_word, alphabet, guess, hashed, losses, the_hang_man)
 
 
 def main():
@@ -101,9 +112,15 @@ def main():
      "\n|"
      "\n|"
      "\n|____",
-     "|____"]
+     "|____",
+     ""]
+    the_hang_man.reverse()
     print(title)
-    secret_word = input("Player 1: Enter secret word: ")
+    # Get some words from a word file...
+    with open('wordlist.txt') as word_list:
+        valid_words = list(word_list.read().split('\n'))
+
+    secret_word = random.choice(valid_words) #input("Player 1: Enter secret word: ")
     alphabet = ['a ', 'b ', 'c ', 'd ', 'e ', 'f ', 'g ', 'h ', 'i ', 'j ', 'k ', 'l ', 'm ',
                 'n ', 'o ', 'p ', 'q ', 'r ', 's ', 't ', 'u ', 'v ', 'w ', 'x ', 'y ', 'z ']
     hashed = []
@@ -112,8 +129,8 @@ def main():
     screen_change()
     print(title)
     while ''.join(hashed) != secret_word:
-        if len(alphabet) > 16:
-            loss = 27 - len(alphabet)       # TODO: fix bug each move is a loss
+        loss = 26 - len(alphabet)
+        if loss < 10:
             letter_guess(secret_word, hashed, alphabet, loss, the_hang_man)
         else:
             break
