@@ -1,5 +1,7 @@
 # HangmanPy
-A command line hangman game written in python. Run using python3 with the folowing command while in the directory:
+A command line hangman game written in python. Single player game.
+
+Run using python3 with the folowing command (in unix) while in the directory:
 ```
 $python3 hangman.py
 ```
