@@ -12,11 +12,16 @@ def word_processing(secret_word: type(string), alphabet: type(list), letter: typ
             hashed[index] = l
         index += 1
     if hashed == pure_hash:
-        alphabet.remove(letter + ' ')
-        losing += 1
-        print("                                     You chose poorly\nlives", str(10 - losing) + man[losing])
-        time.sleep(1)
-        print('                                  The word to guess: ' + ''.join(hashed))
+        try:
+            alphabet.remove(letter + ' ')
+        except ValueError:
+            print("\nInsanity: 'Repeating the same actions and expecting a different result'\n")
+            time.sleep(1)
+        else:
+            losing += 1
+            print("                                     You chose poorly\nlives", str(10 - losing) + man[losing])
+            time.sleep(1)
+            print('                                  The word to guess: ' + ''.join(hashed))
     else:
         print("                                         You chose wisely!\nlives", str(10 - losing) + man[losing])
         time.sleep(1)
@@ -37,11 +42,11 @@ def screen_change():
           "*****")
     print("*********************&&******************&&*****************&&***********************&&*************"
           "*****")
-    print("*******************==||==**************==||==*************==||==*******************==||==***********"
+    print("********************/||\\****************/||\\***************/||\\*********************/||\\***********"
           "*****")
-    print("*******************/***\\****************/**\\***************/**\\*********************/**\\************"
+    print("********************/**\\****************/**\\***************/**\\*********************/**\\************"
           "*****")
-    print("******************/*****\\**************/****\\*************/****\\*******************/****\\***********"
+    print("*******************/****\\**************/****\\*************/****\\*******************/****\\***********"
           "*****")
 
 
@@ -49,11 +54,12 @@ def letter_guess(secret_word: type(string), hashed: type(list), alphabet: type(l
     print("\nYour Turn ..............................................................................................")
     print("Choices: " + ''.join(alphabet))
     guess = input("Guess a letter: ")
-    if guess == "exit":
+    if guess.isupper():
+        guess = guess.lower()
+    elif guess == "exit":
         print("****************************       The word was " + secret_word + "    *******************************")
         exit(0)
-    else:
-        word_processing(secret_word, alphabet, guess, hashed, losses, the_hang_man)
+    word_processing(secret_word, alphabet, guess, hashed, losses, the_hang_man)
 
 
 def main():
