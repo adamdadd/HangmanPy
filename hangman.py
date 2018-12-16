@@ -146,7 +146,11 @@ def main():
     else:
         print("****************************       The word was " + secret_word + "    *******************************")
         print("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!    GAME OVER    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        return 0
+        play2 = input('Play Again (y/n): ')
+        if play2 == 'y':
+            main()
+        else:
+            return 0
 
 
 if __name__ == "__main__":
