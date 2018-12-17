@@ -71,8 +71,8 @@ def letter_guess(secret_word: type(string), hashed: type(list), alphabet: type(l
 
 def main():
     title = "********************************************    HANGMAN    **********************************************"
-    the_hang_man = \
-    ["-------------"
+    the_hang_man = [
+     "\n-------------"
      "\n|            |"
      "\n|            0"
      "\n|           /|\\"
@@ -153,13 +153,9 @@ def main():
         print("\n**************************************     The word was " + secret_word + "    ***********************"
                                                                                            "******")
         print("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!    GAME OVER    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+
     play_again = input("Play Again (y/n): ")
     if play_again == 'y':
         main()
     else:
         return 0
-
-
-if __name__ == "__main__":
-    main()
-
