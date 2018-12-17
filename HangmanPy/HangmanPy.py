@@ -71,8 +71,8 @@ def letter_guess(secret_word: type(string), hashed: type(list), alphabet: type(l
 
 def main():
     title = "********************************************    HANGMAN    **********************************************"
-    the_hang_man = \
-    ["-------------"
+    the_hang_man = [
+     "\n-------------"
      "\n|            |"
      "\n|            0"
      "\n|           /|\\"
@@ -130,7 +130,7 @@ def main():
     the_hang_man.reverse()
     print(title)
     # Get some words from a word file...
-    with open('wordlist.txt') as word_list:
+    with open('HangmanPy/wordlist.txt') as word_list:
         valid_words = list(word_list.read().split('\n'))
 
     secret_word = random.choice(valid_words) #input("Player 1: Enter secret word: ")
@@ -153,6 +153,7 @@ def main():
         print("\n**************************************     The word was " + secret_word + "    ***********************"
                                                                                            "******")
         print("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!    GAME OVER    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+
     play_again = input("Play Again (y/n): ")
     if play_again == 'y':
         main()
@@ -162,4 +163,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
