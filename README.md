@@ -42,6 +42,8 @@ or on windows:
 ```dos
 > py3 HangmanPy.py
 ```
+## License
+Standard MIT License. See here: [License](/License)
 
 ## Contact:
 Any issue or questions feel free to e-mail: adam-dad@hotmail.co.uk
