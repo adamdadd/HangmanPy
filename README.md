@@ -46,7 +46,7 @@ or on windows:
 > py3 HangmanPy.py
 ```
 
-### User Guide
+## User Guide
 Initially you will be greeted wth a 1 or 2 player selection screen.
 
 If you choose 1, you will be enter single-player mode.
@@ -56,7 +56,7 @@ Choosing 2 will result in multi-player mode.
 NOTE: If a different value is entered the game will default to
 single-player mode.
 
-#### Single-Player
+### Single-Player
 If you're entering single-player mode, the word will be chosen randomly from the wordlist.txt file (contains most words in the english 
 dictionary).
 
@@ -65,7 +65,7 @@ followed by the return key.
 
 The hangman allows for 10 guesses good luck!
 
-#### Local Multi-player
+### Local Multi-player
 If you'd like to play with a friend, choose 2 when asked for play options. 
  
 This allows for an "executioner", a player can enter a secret word or message (all one word for now) and press return.
