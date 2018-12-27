@@ -129,15 +129,15 @@ def main():
      ""]
     the_hang_man.reverse()
     print(title)
-    play_choice = input("How many players be hangin\' today? (1/2): ")
+    play_choice = input("Is there an executioner with you? (y/n): ")
 
-    if play_choice == 1:    # Single-player Multi-player mode selection
+    if play_choice == 'n':    # Single-player Multi-player mode selection
         # Get some words from a word file...
         with open('HangmanPy/wordlist.txt') as word_list:
             valid_words = list(word_list.read().split('\n'))
         secret_word = random.choice(valid_words)
-    elif play_choice == 2:
-        secret_word = input("Player 1: Enter secret word: ")
+    elif play_choice == 'y':
+        secret_word = input("Executioner. Enter the word and it shall be the key: ")
     else:
         print("Invalid Selection, Defaulting to single-player mode...")
         # Get some words from a word file...
