@@ -1,9 +1,9 @@
-import string
+#!/use/bin/env python3
 import random
 import time
 
 
-def word_processing(secret_word: type(string), alphabet: type(list), letter: type(string), hashed: type(list), losing: type(int), man: type(list)):
+def word_processing(secret_word, alphabet, letter, hashed, losing, man):
     secret_letters = list(secret_word)
     pure_hash = hashed.copy()           # Value of hashed saved going into function
     index = 0
@@ -56,7 +56,7 @@ def screen_change():
           "*****")
 
 
-def letter_guess(secret_word: type(string), hashed: type(list), alphabet: type(list), losses: type(int), the_hang_man: type(list)):
+def letter_guess(secret_word, hashed, alphabet, losses, the_hang_man):
     print("\nYour Turn ...............................................................................................")
     print("Choices: " + ''.join(alphabet))
     guess = input("Guess a letter: ")
@@ -129,11 +129,23 @@ def main():
      ""]
     the_hang_man.reverse()
     print(title)
-    # Get some words from a word file...
-    with open('HangmanPy/wordlist.txt') as word_list:
-        valid_words = list(word_list.read().split('\n'))
+    play_choice = input("How many players be hangin\' today? (1/2): ")
 
-    secret_word = random.choice(valid_words) #input("Player 1: Enter secret word: ")
+    if play_choice == 1:    # Single-player Multi-player mode selection
+        # Get some words from a word file...
+        with open('HangmanPy/wordlist.txt') as word_list:
+            valid_words = list(word_list.read().split('\n'))
+        secret_word = random.choice(valid_words)
+    elif play_choice == 2:
+        secret_word = input("Player 1: Enter secret word: ")
+    else:
+        print("Invalid Selection, Defaulting to single-player mode...")
+        # Get some words from a word file...
+        with open('HangmanPy/wordlist.txt') as word_list:
+            valid_words = list(word_list.read().split('\n'))
+        secret_word = random.choice(valid_words)
+        time.sleep(5)
+
     alphabet = ['a ', 'b ', 'c ', 'd ', 'e ', 'f ', 'g ', 'h ', 'i ', 'j ', 'k ', 'l ', 'm ',
                 'n ', 'o ', 'p ', 'q ', 'r ', 's ', 't ', 'u ', 'v ', 'w ', 'x ', 'y ', 'z ']
     hashed = []
