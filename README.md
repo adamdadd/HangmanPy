@@ -22,7 +22,6 @@ If you don't get a version number install python 3 to continue.
 
 ## Upcoming Features
     Ideas for additional features:
-    - Strip spacecs and symbols from executioner message.
     - When quitting part way through a word it's saved and then loaded when re-entering the game.
     
 The above features will be implemented and can be removed and changed as required from the HangmanPy.py file located in HangmanPy/HangmanPy/HangmanPy.py
@@ -68,7 +67,7 @@ The hangman allows for 10 guesses good luck!
 ### Local Multi-player
 If you'd like to play with a friend, choose 2 when asked for play options. 
  
-This allows for an "executioner", a player can enter a secret word or message (all one word for now) and press return.
+This allows for an "executioner", a player can enter a secret word or message and press return.
 
 ## License
 [MIT License](/LICENSE)
