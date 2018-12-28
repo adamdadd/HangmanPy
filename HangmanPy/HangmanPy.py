@@ -137,7 +137,8 @@ def main():
             valid_words = list(word_list.read().split('\n'))
         secret_word = random.choice(valid_words)
     elif play_choice == 'y':
-        secret_word = input("Executioner. Enter the word and it shall be the key: ")
+        secret_message = input("Executioner. Enter the word and it shall be the key: ")
+        secret_word = ''.join(c for c in secret_message if c.isalnum()).lower()  # removes spaces and special characters
     else:
         print("Invalid Selection, Defaulting to single-player mode...")
         # Get some words from a word file...
