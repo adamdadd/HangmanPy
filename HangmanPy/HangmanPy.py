@@ -12,7 +12,7 @@ def word_processing(secret_word, alphabet, letter, hashed, losing, man):
         letter (char): The selected letter of the alphabet,
         hashed (list): List of hashes with size equal to alphabet,
         losing (int): Count of failed attempts,
-        man (int): Pleyer.
+        man (list): Hangman states.
     """
     secret_letters = list(secret_word)
     pure_hash = hashed.copy()           # Value of hashed saved going into function
@@ -190,7 +190,7 @@ def main():
     if ''.join(hashed) == secret_word:
         print("\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$    WINNER !!!    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
     else:
-        print("\n**************************************     The word was " + secret_word + "    ***********************")
+        print("\n**************************************     The word was " + secret_word + "    ***********************"
                                                                                            "******")
         print("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!    GAME OVER    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 
