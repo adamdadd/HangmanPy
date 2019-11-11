@@ -4,6 +4,16 @@ import time
 
 
 def word_processing(secret_word, alphabet, letter, hashed, losing, man):
+    """Handling of word arrays. hashing, validation and removing.
+
+    Args: 
+        secret_word (str): The word to be guessed,
+        alphabet (str): The remaining letters of the alphabet available to gusess,
+        letter (char): The selected letter of the alphabet,
+        hashed (list): List of hashes with size equal to alphabet,
+        losing (int): Count of failed attempts,
+        man (int): Pleyer.
+    """
     secret_letters = list(secret_word)
     pure_hash = hashed.copy()           # Value of hashed saved going into function
     index = 0
@@ -35,6 +45,8 @@ def word_processing(secret_word, alphabet, letter, hashed, losing, man):
 
 
 def screen_change():
+    """A intro screen.
+    """
     loading = "To The Gallows"
     for i in range(91):
         loading += '*'
@@ -57,6 +69,15 @@ def screen_change():
 
 
 def letter_guess(secret_word, hashed, alphabet, losses, the_hang_man):
+    """Letter selection function.
+
+    Args:
+        secret_word (str): The word required for success.
+        hashed (str): Hashes representing the word.
+        alphabet (str): Full list of available letters.
+        losses (int): Number of incorrect attempts so far.
+        the_hang_man ()
+    """
     print("\nYour Turn ...............................................................................................")
     print("Choices: " + ''.join(alphabet))
     guess = input("Guess a letter: ")
@@ -70,6 +91,12 @@ def letter_guess(secret_word, hashed, alphabet, losses, the_hang_man):
 
 
 def main():
+    """Main run function. Used to start an instance of the game.
+
+    Returns:
+        1 : True
+        0 : False
+    """
     title = "********************************************    HANGMAN    **********************************************"
     the_hang_man = [
      "\n-------------"
@@ -133,7 +160,7 @@ def main():
 
     if play_choice == 'n':    # Single-player Multi-player mode selection
         # Get some words from a word file...
-        with open('HangmanPy/wordlist.txt') as word_list:
+        with open('./wordlist.txt') as word_list:
             valid_words = list(word_list.read().split('\n'))
         secret_word = random.choice(valid_words)
     elif play_choice == 'y':
@@ -142,7 +169,7 @@ def main():
     else:
         print("Invalid Selection, Defaulting to single-player mode...")
         # Get some words from a word file...
-        with open('HangmanPy/wordlist.txt') as word_list:
+        with open('./wordlist.txt') as word_list:
             valid_words = list(word_list.read().split('\n'))
         secret_word = random.choice(valid_words)
         time.sleep(5)
@@ -163,7 +190,7 @@ def main():
     if ''.join(hashed) == secret_word:
         print("\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$    WINNER !!!    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
     else:
-        print("\n**************************************     The word was " + secret_word + "    ***********************"
+        print("\n**************************************     The word was " + secret_word + "    ***********************")
                                                                                            "******")
         print("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!    GAME OVER    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 
