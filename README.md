@@ -1,5 +1,5 @@
 # HangmanPy
-![hangman.png](https://github.com/adamdadd/HangmanPy/blob/master/img/hangman.png)
+![hangman.png](https://github.com/adamdadd/HangmanPy/blob/master/img/hangman_minimal.png)
 
 ## Overview
 This is a command line hangman game written in only using "simple" python. 
